@@ -17,16 +17,19 @@ class test_add_new(unittest.TestCase):
         self.wd.implicitly_wait(60)
 
     def test_test_add_new(self):
-        success = True
         wd = self.wd
+        # open home page
         wd.get("http://localhost/addressbook/")
+        # login
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys("admin")
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys("secret")
         wd.find_element_by_xpath("//input[@value='Login']").click()
+        # open add_new page
         wd.find_element_by_link_text("add new").click()
+        # fill add_new firm
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys("Sergei")
@@ -84,10 +87,12 @@ class test_add_new(unittest.TestCase):
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys("Second screept!")
+        # submit add_new creation
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
+        # return to home page
         wd.find_element_by_link_text("home page").click()
+        # logout
         wd.find_element_by_link_text("Logout").click()
-        self.assertTrue(success)
 
     def tearDown(self):
         self.wd.quit()
