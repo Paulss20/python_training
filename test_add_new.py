@@ -18,7 +18,6 @@ class test_add_new(unittest.TestCase):
         self.wd.implicitly_wait(60)
 
     def test_add_new(self):
-        wd = self.wd
         self.login(wd, username="admin", password="secret")
         self.fill_add_new_form(wd, AddNew(my_f_name="Sergei", my_m_name="Fedorovich", my_l_name="Semenov", my_nickname="try",
                                my_company="Big company", work_address="SPb, Fuchika str, 15", my_h_telefon="11111111",
@@ -29,7 +28,6 @@ class test_add_new(unittest.TestCase):
         self.logout(wd)
 
     def test_add_empty_new(self):
-        wd = self.wd
         self.login(wd, username="admin", password="secret")
         self.fill_add_new_form(wd, AddNew(my_f_name="", my_m_name="", my_l_name="", my_nickname="",
                                my_company="", work_address="", my_h_telefon="",
@@ -40,12 +38,15 @@ class test_add_new(unittest.TestCase):
         self.logout(wd)
 
     def logout(self, wd):
+         wd = self.wd
          wd.find_element_by_link_text("Logout").click()
 
     def return_to_home_page(self, wd):
+         wd = self.wd
          wd.find_element_by_link_text("home page").click()
 
     def fill_add_new_form(self, wd, add_new):
+         wd = self.wd
          self.open_add_new_page(wd)
          # fill add_new form
          wd.find_element_by_name("firstname").click()
@@ -110,9 +111,11 @@ class test_add_new(unittest.TestCase):
          self.return_to_home_page(wd)
 
     def open_add_new_page(self, wd):
+         wd = self.wd
          wd.find_element_by_link_text("add new").click()
 
     def login(self, wd, username, password):
+         wd = self.wd
          self.open_home_page(wd)
          wd.find_element_by_name("user").click()
          wd.find_element_by_name("user").clear()
@@ -122,6 +125,7 @@ class test_add_new(unittest.TestCase):
          wd.find_element_by_xpath("//input[@value='Login']").click()
 
     def open_home_page(self, wd):
+         wd = self.wd
          wd.get("http://localhost/addressbook/")
 
     def tearDown(self):
