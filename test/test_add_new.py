@@ -2,12 +2,12 @@
 
 import pytest
 from model.add_new import AddNew
-from fixture.contactsapp import ContactsApplication
+from fixture.application import Application
 
 
 @pytest.fixture
 def app(request):
-     fixture = ContactsApplication()
+     fixture = Application()
      request.addfinalizer(fixture.destroy)
      return fixture
 
