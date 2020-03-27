@@ -1,7 +1,6 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from fixture.session import SessionHelper
 from fixture.group import GroupHelper
-from fixture.contact_session import ContactSessionHelper
 from fixture.contacts import ContactsHelper
 
 
@@ -12,7 +11,6 @@ class Application:
           self.wd.implicitly_wait(5)
           self.session = SessionHelper(self)
           self.group = GroupHelper(self)
-          self.contact_session = ContactSessionHelper(self)
           self.contacts = ContactsHelper(self)
 
      def is_valid(self):
