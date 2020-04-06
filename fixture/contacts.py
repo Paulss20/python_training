@@ -43,7 +43,7 @@ class ContactsHelper:
           self.change_field_contact_value("phone2", add_new.my_second_address)
           self.change_field_contact_value("notes", add_new.my_notes)
 
-     def filling(self, add_new):
+     def create_contact(self, add_new):
           wd = self.app.wd
           self.open_add_new_page()
           self.fill_contact_form(add_new)
@@ -75,15 +75,17 @@ class ContactsHelper:
           self.select_first_contact()
           # open modification form
           wd.find_element_by_xpath("//img[@alt='Edit']").click()
-#          wd.switch_to_alert().accept()
           # fill group form
           self.fill_contact_form(new_contact_data)
           # submit modification
           wd.find_element_by_xpath("(//input[@name='update'])[2]").click()
-#          wd.switch_to_alert().accept()
           self.open_home_tab()
 
      def return_to_home_page(self):
           wd = self.app.wd
           wd.find_element_by_link_text("home page").click()
 
+     def count(self):
+         wd = self.app.wd
+         self.open_add_new_page()
+         return len(wd.find_elements_by_name("selected[]"))
