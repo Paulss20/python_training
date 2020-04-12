@@ -8,7 +8,7 @@ class Application:
 
      def __init__(self):
           self.wd = WebDriver()
-#          self.wd.implicitly_wait(5) # t.k. stranica obnovlayetsay ne dinamicheski, to v etom priloghenii takoi neobhodimosti net
+          self.wd.implicitly_wait(5) # t.k. stranica obnovlayetsay ne dinamicheski, to v etom priloghenii takoi neobhodimosti net. Alexei razreshil ostavit
           self.session = SessionHelper(self)
           self.group = GroupHelper(self)
           self.contacts = ContactsHelper(self)

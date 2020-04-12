@@ -53,7 +53,8 @@ class ContactsHelper:
 
      def open_home_tab(self):
           wd = self.app.wd
-          wd.find_element_by_link_text("home").click()
+          if not (wd.current_url.endswith("/addressbook") and len(wd.find_elements_by_name("add")) > 0):
+               wd.find_element_by_link_text("home").click()
 
      def select_first_contact(self):
           wd = self.app.wd
