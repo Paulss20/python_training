@@ -1,4 +1,4 @@
-
+from sys import maxsize
 
 class AddNew:
      def __init__(self, my_f_name=None, my_m_name=None, my_l_name=None, my_nickname=None, my_company=None, work_address=None, my_h_telefon=None, my_mobile=None, my_work_telefon=None, my_fax=None, my_company_mail=None, my_second_mail=None, my_homepage=None, my_byear=None, my_home_address=None, my_second_address=None, my_notes=None, my_id=None):
@@ -21,4 +21,14 @@ class AddNew:
           self.my_notes = my_notes
           self.my_id = my_id
 
+     def __repr__(self):
+          return "%s:%s" % (self.my_id, self.my_l_name)
 
+     def __eq__(self, other):
+          return (self.my_id is None or other.my_id is None or self.my_id == other.my_id) and self.my_l_name == other.my_l_name
+
+     def id_or_max(self):
+          if self.my_id:
+               return int(self.my_id)
+          else:
+               return maxsize
