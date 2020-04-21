@@ -51,6 +51,7 @@ class ContactsHelper:
           # submit add_new creation
           wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
           self.return_to_home_page()
+          self.open_home_tab()
 
      def open_home_tab(self):
           wd = self.app.wd
@@ -85,7 +86,9 @@ class ContactsHelper:
 
      def return_to_home_page(self):
           wd = self.app.wd
-          wd.find_element_by_link_text("home page").click()
+          if not (wd.current_url.endswith("/addressbook") and len(wd.find_elements_by_name("add")) > 0):
+               wd.find_element_by_link_text("home").click()
+#               wd.find_element_by_link_text("home page").click()
 
      def count(self):
          wd = self.app.wd
@@ -96,9 +99,12 @@ class ContactsHelper:
           wd = self.app.wd
           self.open_home_tab()
           contacts = []
+#          for element in wd.find_elements_by_css_selector("tr[name=entry]"):
           for element in wd.find_elements_by_xpath("//tr[@name='entry']"):
-               text = element.text
+               cells = element.find_elements_by_tag_name("td")
+               lastname = cells[1].text
+               firstname = cells[2].text
                id = element.find_element_by_name("selected[]").get_attribute("value")
-               contacts.append(AddNew(my_l_name=text, my_id=id))
+               contacts.append(AddNew(my_l_name=lastname, my_f_name=firstname, my_id=id))
           return contacts
 

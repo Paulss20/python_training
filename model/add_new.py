@@ -1,5 +1,6 @@
 from sys import maxsize
 
+
 class AddNew:
      def __init__(self, my_f_name=None, my_m_name=None, my_l_name=None, my_nickname=None, my_company=None, work_address=None, my_h_telefon=None, my_mobile=None, my_work_telefon=None, my_fax=None, my_company_mail=None, my_second_mail=None, my_homepage=None, my_byear=None, my_home_address=None, my_second_address=None, my_notes=None, my_id=None):
           self.my_f_name = my_f_name
