@@ -18,6 +18,8 @@ class ContactsHelper:
                wd.find_element_by_name(field_name).clear()
                wd.find_element_by_name(field_name).send_keys(text)
 
+#     contact_cache = None
+
      def fill_contact_form(self, add_new):
           wd = self.app.wd
           self.change_field_contact_value("firstname", add_new.my_f_name)
@@ -41,7 +43,7 @@ class ContactsHelper:
           wd.find_element_by_xpath("//option[@value='August']").click()
           self.change_field_contact_value("byear", add_new.my_byear)
           self.change_field_contact_value("address2", add_new.my_home_address)
-          self.change_field_contact_value("phone2", add_new.my_second_address)
+          self.change_field_contact_value("phone2", add_new.my_secondary_phone)
           self.change_field_contact_value("notes", add_new.my_notes)
 
      def create_contact(self, add_new):
@@ -101,11 +103,9 @@ class ContactsHelper:
           wd = self.app.wd
           if not (wd.current_url.endswith("/addressbook") and len(wd.find_elements_by_name("add")) > 0):
                wd.find_element_by_link_text("home").click()
-#               wd.find_element_by_link_text("home page").click()
 
      def count(self):
          wd = self.app.wd
-#         self.open_add_new_page()  # then in test "test_add_new.py" there is a "(9 + 1) != 0" error
          self.open_home_tab()
          return len(wd.find_elements_by_name("selected[]"))
 
@@ -116,12 +116,40 @@ class ContactsHelper:
                wd = self.app.wd
                self.open_home_tab()
                self.contact_cache = []
-#               for element in wd.find_elements_by_css_selector("tr[name=entry]"):
-               for element in wd.find_elements_by_xpath("//tr[@name='entry']"):
-                    cells = element.find_elements_by_tag_name("td")
-                    lastname = cells[1].text
-                    firstname = cells[2].text
-                    id = element.find_element_by_name("selected[]").get_attribute("value")
-                    self.contact_cache.append(AddNew(my_l_name=lastname, my_f_name=firstname, my_id=id))
+               for row in wd.find_elements_by_name("entry"):
+                    cells = row.find_elements_by_tag_name("td")
+                    text_lastname = cells[1].text
+                    text_firstname = cells[2].text
+                    id = cells[0].find_element_by_tag_name("input").get_attribute("value")
+                    all_phones = cells[5].text.splitlines()
+                    self.contact_cache.append(AddNew(my_l_name=text_lastname, my_f_name=text_firstname, my_id=id,
+                                                     my_h_telefon=all_phones[0], my_mobile=all_phones[1],
+                                                     my_work_telefon=all_phones[2],my_secondary_phone=all_phones[3]))
           return list(self.contact_cache)
 
+     def open_contact_to_edit_by_index(self, index):
+          wd = self.app.wd
+          self.open_home_tab()
+          row = wd.find_elements_by_name("entry")[index]
+          cell = row.find_elements_by_tag_name("td")[7]
+          cell.find_element_by_tag_name("a").click()
+
+     def open_contact_view_by_index(self, index):
+          wd = self.app.wd
+          self.open_home_tab()
+          row = wd.find_elements_by_name("entry")[index]
+          cell = row.find_elements_by_tag_name("td")[6]
+          cell.find_element_by_tag_name("a").click()
+
+     def get_contact_info_from_edit_page(self, index):
+          wd = self.app.wd
+          self.open_contact_to_edit_by_index(index)
+          firstname = wd.find_element_by_name("firstname").get_attribute("value")
+          lastname = wd.find_element_by_name("lastname").get_attribute("value")
+          id_contact = wd.find_element_by_name("id").get_attribute("value")
+          home_phone = wd.find_element_by_name("home").get_attribute("value")
+          mobile_phone = wd.find_element_by_name("mobile").get_attribute("value")
+          work_phone = wd.find_element_by_name("work").get_attribute("value")
+          phone2 = wd.find_element_by_name("phone2").get_attribute("value")
+          return AddNew(my_f_name=firstname, my_l_name=lastname, my_id=id_contact, my_h_telefon=home_phone,
+                         my_mobile=mobile_phone, my_work_telefon=work_phone, my_secondary_phone=phone2)
