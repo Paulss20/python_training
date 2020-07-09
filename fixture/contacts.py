@@ -35,6 +35,7 @@ class ContactsHelper:
           self.change_field_contact_value("fax", add_new.my_fax)
           self.change_field_contact_value("email", add_new.my_company_mail)
           self.change_field_contact_value("email2", add_new.my_second_mail)
+          self.change_field_contact_value("email3", add_new.my_third_mail)
           self.change_field_contact_value("homepage", add_new.my_homepage)
           wd.find_element_by_name("bday").click()
           Select(wd.find_element_by_name("bday")).select_by_visible_text("7")
@@ -122,8 +123,12 @@ class ContactsHelper:
                     text_lastname = cells[1].text
                     text_firstname = cells[2].text
                     id = cells[0].find_element_by_tag_name("input").get_attribute("value")
+                    text_address = cells[3].text
+                    all_emails = cells[4].text
                     all_phones = cells[5].text
                     self.contact_cache.append(AddNew(my_l_name=text_lastname, my_f_name=text_firstname, my_id=id,
+                                                     my_home_address=text_address,
+                                                     all_emails_from_home_page=all_emails,
                                                      all_phones_from_home_page=all_phones))
           return list(self.contact_cache)
 
@@ -151,8 +156,14 @@ class ContactsHelper:
           mobile_phone = wd.find_element_by_name("mobile").get_attribute("value")
           work_phone = wd.find_element_by_name("work").get_attribute("value")
           phone2 = wd.find_element_by_name("phone2").get_attribute("value")
+          home_address = wd.find_element_by_name("address").text
+          company_email = wd.find_element_by_name("email").get_attribute("value")
+          second_email = wd.find_element_by_name("email2").get_attribute("value")
+          third_email = wd.find_element_by_name("email3").get_attribute("value")
           return AddNew(my_f_name=firstname, my_l_name=lastname, my_id=id_contact, my_h_telefon=home_phone,
-                         my_mobile=mobile_phone, my_work_telefon=work_phone, my_secondary_phone=phone2)
+                         my_mobile=mobile_phone, my_work_telefon=work_phone, my_secondary_phone=phone2,
+                        my_home_address=home_address, my_company_mail=company_email,
+                        my_second_mail=second_email, my_third_mail=third_email)
 
      def get_contact_from_view_page(self, index):
           wd = self.app.wd
