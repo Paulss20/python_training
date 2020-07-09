@@ -2,10 +2,10 @@ from sys import maxsize
 
 
 class AddNew:
-     def __init__(self, my_f_name=None, my_m_name=None, my_l_name=None, my_nickname=None, my_company=None, \
-                  work_address=None, my_h_telefon=None, my_mobile=None, my_work_telefon=None, my_fax=None, \
-                  my_company_mail=None, my_second_mail=None, my_homepage=None, my_byear=None, my_home_address=None, \
-                  my_secondary_phone=None, my_notes=None, my_id=None):
+     def __init__(self, my_f_name=None, my_m_name=None, my_l_name=None, my_nickname=None, my_company=None,
+                  work_address=None, my_h_telefon=None, my_mobile=None, my_work_telefon=None, my_fax=None,
+                  my_company_mail=None, my_second_mail=None, my_homepage=None, my_byear=None, my_home_address=None,
+                  my_secondary_phone=None, my_notes=None, my_id=None, all_phones_from_home_page=None):
           self.my_f_name = my_f_name
           self.my_m_name = my_m_name
           self.my_l_name = my_l_name
@@ -24,6 +24,7 @@ class AddNew:
           self.my_secondary_phone = my_secondary_phone
           self.my_notes = my_notes
           self.my_id = my_id
+          self.all_phones_from_home_page = all_phones_from_home_page
 
      def __repr__(self):
           return "%s:%s %s" % (self.my_id, self.my_f_name, self.my_l_name)
