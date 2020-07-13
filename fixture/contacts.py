@@ -93,11 +93,11 @@ class ContactsHelper:
           self.open_home_tab()
           self.select_contact_by_index(index)
           # open modification form
-          wd.find_element_by_xpath("//img[@alt='Edit']").click()
+          wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
           # fill group form
           self.fill_contact_form(new_contact_data)
           # submit modification
-          wd.find_element_by_xpath("(//input[@name='update'])[2]").click()
+          wd.find_element_by_name("update").click()
           self.open_home_tab()
           self.contact_cache = None
 
