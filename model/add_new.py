@@ -18,7 +18,7 @@ class AddNew:
           self.my_fax = my_fax
           self.my_company_mail = my_company_mail
           self.my_second_mail = my_second_mail
-          self.my_third_mail=my_third_mail
+          self.my_third_mail = my_third_mail
           self.my_homepage = my_homepage
           self.my_byear = my_byear
           self.my_home_address = my_home_address
@@ -26,7 +26,7 @@ class AddNew:
           self.my_notes = my_notes
           self.my_id = my_id
           self.all_phones_from_home_page = all_phones_from_home_page
-          self.all_emails_from_home_page=all_emails_from_home_page
+          self.all_emails_from_home_page = all_emails_from_home_page
 
      def __repr__(self):
           return "%s:%s %s" % (self.my_id, self.my_f_name, self.my_l_name)
