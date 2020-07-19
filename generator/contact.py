@@ -3,7 +3,7 @@ from model.add_new import AddNew
 import random
 import string
 import os.path
-import json
+import jsonpickle
 import getopt
 import sys
 
@@ -38,10 +38,11 @@ testdata = [AddNew(my_f_name="", my_l_name="", work_address="", my_h_telefon="",
             my_company_mail=random_string("email", 10), my_second_mail=random_string("email2", 10),
             my_third_mail=random_string("email3", 10),
             my_home_address=random_string("address2", 10), my_secondary_phone=random_string("phone2", 10))
-    for i in range(5)
+    for i in range(n)
 ]
 
 file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", f)
 
 with open(file, "w") as out:
-    out.write(json.dumps(testdata, default=lambda x: x.__dict__, indent=2))
+     jsonpickle.set_encoder_options("json", indent=2)
+     out.write(jsonpickle.encode(testdata))
