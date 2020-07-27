@@ -71,6 +71,10 @@ class ContactsHelper:
           wd = self.app.wd
           wd.find_elements_by_name("selected[]")[index].click()
 
+     def select_contact_by_id(self, id):
+          wd = self.app.wd
+          wd.find_element_by_css_selector("input[value='%s']" % id).click()
+
      def delete_first_contact(self):
           self.delete_contact_by_index(0)
 
@@ -85,6 +89,20 @@ class ContactsHelper:
           self.open_home_tab()
           self.contact_cache = None
 
+     def delete_contact_by_id(self, id):
+          wd = self.app.wd
+          # select first contact = click first checkbox
+          self.open_home_tab()
+          self.select_contact_by_id(id)
+          # submit deletion
+#          wd.find_element_by_xpath("//input[@value='Delete']").click()
+          wd.find_element_by_css_selector("input[value='Delete']").click()
+          # accept dialog window
+          wd.switch_to_alert().accept()
+          # return to home page
+          self.open_home_tab()
+          self.contact_cache = None
+
      def modify_first_contact(self):
           self.modify_contact_by_index(0)
 
@@ -93,11 +111,25 @@ class ContactsHelper:
           self.open_home_tab()
           self.select_contact_by_index(index)
           # open modification form
-          wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
+          wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()  # elrments or element?
           # fill group form
           self.fill_contact_form(new_contact_data)
           # submit modification
           wd.find_element_by_name("update").click()
+          self.open_home_tab()
+          self.contact_cache = None
+
+     def modify_contact_by_id(self, id, new_contact_data):
+          wd = self.app.wd
+          self.open_home_tab()
+          self.select_contact_by_id(id)
+          # open modification form
+          wd.find_element_by_xpath("//a[@href='edit.php?id=%s']" % id).click()
+          # fill group form
+          self.fill_contact_form(new_contact_data)
+          # submit modification
+#          wd.find_element_by_name("update").click()
+          wd.find_element_by_xpath("//input[@value='Update']").click()
           self.open_home_tab()
           self.contact_cache = None
 
@@ -175,3 +207,24 @@ class ContactsHelper:
           phone2 = re.search("P: (.*)", text).group(1)
           return AddNew(my_h_telefon=home_phone, my_mobile=mobile_phone,
                         my_work_telefon=work_phone, my_secondary_phone=phone2)
+
+     def removing_spaces(self, s):
+          return re.sub("  ", " ", s.strip())
+
+     def clear(self, s):
+          return re.sub("[() -]", "", s)
+
+     def merge_phones_like_on_home_page(self, contacts):
+          # filter - удаляем элементы None, map - чистим контакты от лишних символов, filter - выбираем только не пустые значения
+          return "\n".join(filter(lambda x: x != "",
+                                  map(lambda x: self.clear(x),
+                                      filter(lambda x: x is not None,
+                                             [contacts.my_h_telefon, contacts.my_mobile, contacts.my_work_telefon,
+                                              contacts.my_secondary_phone]))))
+
+     def merge_emails_like_on_home_page(self, contacts):
+          # filter - удаляем элементы None, map - чистим контакты от лишних символов, filter - выбираем только не пустые значения
+          return "\n".join(filter(lambda x: x != "",
+                                  map(lambda x: self.clear(x),
+                                      filter(lambda x: x is not None,
+                                             [contacts.my_company_mail, contacts.my_second_mail, contacts.my_third_mail]))))
