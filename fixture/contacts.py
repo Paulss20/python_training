@@ -158,8 +158,9 @@ class ContactsHelper:
                     text_address = cells[3].text
                     all_emails = cells[4].text
                     all_phones = cells[5].text
-                    self.contact_cache.append(AddNew(my_l_name=text_lastname, my_f_name=text_firstname, my_id=id,
-                                                     my_home_address=text_address,
+                    self.contact_cache.append(AddNew(my_l_name=self.removing_spaces(text_lastname),
+                                                     my_f_name=self.removing_spaces(text_firstname), my_id=id,
+                                                     my_home_address=self.removing_spaces(text_address),
                                                      all_emails_from_home_page=all_emails,
                                                      all_phones_from_home_page=all_phones))
           return list(self.contact_cache)

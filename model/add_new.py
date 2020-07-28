@@ -29,7 +29,11 @@ class AddNew:
           self.all_emails_from_home_page = all_emails_from_home_page
 
      def __repr__(self):
-          return "%s:%s %s" % (self.my_id, self.my_f_name, self.my_l_name)
+          return "%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s" % (self.my_id, self.my_f_name, self.my_l_name,
+                                                       self.work_address, self.my_h_telefon, self.my_mobile,
+                                                       self.my_work_telefon, self.my_secondary_phone,
+                                                       self.my_company_mail, self.my_second_mail, self.my_third_mail
+                                                       )
 
      def __eq__(self, other):
           return (self.my_id is None or other.my_id is None or self.my_id == other.my_id)\

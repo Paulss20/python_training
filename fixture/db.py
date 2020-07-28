@@ -2,6 +2,7 @@
 import pymysql.cursors
 from model.group import Group
 from model.add_new import AddNew
+import re
 
 class DbFixture:
 
@@ -11,6 +12,7 @@ class DbFixture:
           self.user = user
           self.password = password
           self.connection = pymysql.connect(host=host, database=name, user=user, password=password, autocommit=True)
+          # autocommit убирает кэширование в базе, чтобы после изменений в проверках обновлялось количество групп
 
      def get_group_list(self):
           list = []
@@ -29,10 +31,21 @@ class DbFixture:
           list = []
           cursor = self.connection.cursor()
           try:
-               cursor.execute("select id, firstname, lastname from addressbook where deprecated='0000-00-00 00:00:00'")
+               cursor.execute("select id, firstname, lastname, address, home, mobile, work, email, email2, email3, phone2 from addressbook where deprecated='0000-00-00 00:00:00'")
                for row in cursor:
-                    (id, firstname, lastname) = row
-                    list.append(AddNew(my_id=str(id), my_f_name=firstname, my_l_name=lastname))
+                    (id, firstname, lastname, address, home, mobile, work, email, email2, email3, phone2) = row
+                    current_contact = AddNew(my_id=str(id), my_f_name=firstname, my_l_name=lastname, my_home_address=address,
+                                              my_h_telefon=home, my_mobile=mobile, my_work_telefon=work, my_secondary_phone=phone2,
+                                              my_company_mail=email, my_second_mail=email2, my_third_mail=email3
+                                              )
+                    final_contact = AddNew(my_id=str(id), my_f_name=self.removing_spaces(firstname),
+                                            my_l_name=self.removing_spaces(lastname),
+                                            my_home_address=self.removing_spaces(address)
+                                            )
+                    final_contact.all_phones_from_home_page = self.merge_phones_like_on_home_page(current_contact)
+                    final_contact.all_emails_from_home_page = self.merge_emails_like_on_home_page(current_contact)
+                    list.append(final_contact)
+
           finally:
                cursor.close()
           return list
@@ -40,3 +53,24 @@ class DbFixture:
 
      def destroy(self):
           self.connection.close()
+
+     def clear(self, s):
+          return re.sub("[() -]", "", s)
+
+     def merge_phones_like_on_home_page(self, contacts):
+          # filter - удаляем элементы None, map - чистим контакты от лишних символов, filter - выбираем только не пустые значения
+          return "\n".join(filter(lambda x: x != "",
+                                  map(lambda x: self.clear(x),
+                                      filter(lambda x: x is not None,
+                                             [contacts.my_h_telefon, contacts.my_mobile, contacts.my_work_telefon,
+                                              contacts.my_secondary_phone]))))
+
+     def merge_emails_like_on_home_page(self, contacts):
+          # filter - удаляем элементы None, map - чистим контакты от лишних символов, filter - выбираем только не пустые значения
+          return "\n".join(filter(lambda x: x != "",
+                                  map(lambda x: self.clear(x),
+                                      filter(lambda x: x is not None,
+                                             [contacts.my_company_mail, contacts.my_second_mail, contacts.my_third_mail]))))
+
+     def removing_spaces(self, s):
+          return re.sub("  ", " ", s.strip())
