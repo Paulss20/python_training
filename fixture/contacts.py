@@ -229,3 +229,19 @@ class ContactsHelper:
                                   map(lambda x: self.clear(x),
                                       filter(lambda x: x is not None,
                                              [contacts.my_company_mail, contacts.my_second_mail, contacts.my_third_mail]))))
+
+     def add_contact_to_group(self, contacts, group):
+          wd = self.app.wd
+          self.select_contact_by_id(contacts.my_id)
+          wd.find_element_by_name("to_group").click()
+          Select(wd.find_element_by_name("to_group")).select_by_value(group.id)
+          wd.find_element_by_name("add").click()
+          self.app.open_home_tab()
+
+     def remove_contact_from_group(self, contacts, group):
+          wd = self.app.wd
+          wd.find_element_by_name("group").click()
+          Select(wd.find_element_by_name("group")).select_by_value(group.id)
+          wd.find_element_by_id(contacts.my_id).click()
+          wd.find_element_by_name("remove").click()
+          self.app.open_home_tab()
