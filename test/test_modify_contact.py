@@ -28,7 +28,7 @@ def test_modify_some_contact(app, db, check_ui):
               new_contacts_ui.append(AddNew(my_l_name=app.contacts.removing_spaces(i.my_l_name),
                                             my_f_name=app.contacts.removing_spaces(i.my_f_name),
                                             my_id=i.my_id,
-#                                            work_address=i.work_address,
+                                            my_home_address=i.my_home_address,
                                             all_phones_from_home_page=app.contacts.merge_phones_like_on_home_page(i),
                                             all_emails_from_home_page=app.contacts.merge_emails_like_on_home_page(i)
                                             )
