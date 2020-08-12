@@ -1,6 +1,7 @@
 pytest
-pytest_bdd
+pytest-bdd
 selenium
 jsonpickle
 pony
-pymysql
+PyMySQL
+py
