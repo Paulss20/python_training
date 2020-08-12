@@ -5,3 +5,4 @@ jsonpickle
 pony
 PyMySQL
 py
+mysql-connector-python-rf
