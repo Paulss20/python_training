@@ -1,10 +1,7 @@
 pytest
-pytest-bdd
+pytest_bdd
 selenium
 jsonpickle
 pony
-PyMySQL
-py
+pymysql
 mysql-connector-python-rf
-pytest-allure-adaptor
-robotframework-python3
