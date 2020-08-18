@@ -1,0 +1,146 @@
+{
+  "uid" : "924c24b99ea0939c",
+  "name" : "test_add_new[None;firstnamek;lastname6vI v7L;addressxgJ    ;home_phone 4pRuLr;mobile_phone Oi;work_phoneCD;phone2A 4wg;email 53Y MRR;email22 ;email3NQ IN9 ]",
+  "fullName" : "test.test_add_new#test_add_new",
+  "historyId" : "52e570397cf6039d2233e7df6b5b9b64",
+  "time" : {
+    "start" : 1597736373761,
+    "stop" : 1597736378271,
+    "duration" : 4510
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "check_ui",
+    "time" : {
+      "start" : 1597736373761,
+      "stop" : 1597736373761,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1597736373628,
+      "stop" : 1597736373760,
+      "duration" : 132
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "db",
+    "time" : {
+      "start" : 1597736332063,
+      "stop" : 1597736332071,
+      "duration" : 8
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "stop",
+    "time" : {
+      "start" : 1597736332063,
+      "stop" : 1597736332063,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "afterStages" : [ {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1597736398378,
+      "stop" : 1597736398379,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "stop::fin",
+    "time" : {
+      "start" : 1597736397477,
+      "stop" : 1597736398377,
+      "duration" : 900
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_add_new"
+  }, {
+    "name" : "host",
+    "value" : "BLA00109"
+  }, {
+    "name" : "thread",
+    "value" : "12088-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_add_new"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "json_contacts",
+    "value" : "None;firstnamek;lastname6vI v7L;addressxgJ    ;home_phone 4pRuLr;mobile_phone Oi;work_phoneCD;phone2A 4wg;email 53Y MRR;email22 ;email3NQ IN9 "
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "924c24b99ea0939c.json",
+  "parameterValues" : [ "None;firstnamek;lastname6vI v7L;addressxgJ    ;home_phone 4pRuLr;mobile_phone Oi;work_phoneCD;phone2A 4wg;email 53Y MRR;email22 ;email3NQ IN9 " ]
+}

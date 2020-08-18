@@ -1,0 +1,152 @@
+{
+  "uid" : "415927fda0438a9d",
+  "name" : "test_add_new[None;firstname Rl;lastnamel98x  trB;address BQdlJ;home_phoneyfP;mobile_phone;work_phone GXz;phone2G;emailuo d2q0vq;email2wny  tH;email3uytJT0I]",
+  "fullName" : "test.test_add_new#test_add_new",
+  "historyId" : "e0868b8449b57dd167c25f7bc9b0f95a",
+  "time" : {
+    "start" : 1597736383082,
+    "stop" : 1597736387591,
+    "duration" : 4509
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert [1;firstname1...one;None, ...] == [1;firstname1...one;None, ...]\n  At index 12 diff: None;firstname Rl;lastnamel98x  trB;address BQdlJ;home_phoneyfP;mobile_phone;work_phone GXz;phone2G;emailuo d2q0vq;email2wny  tH;email3uytJT0I != 16;firstname Rl;lastnamel98x trB;None;None;None;None;None;None;None;None\n  Use -v to get the full diff",
+  "statusTrace" : "app = <fixture.application.Application object at 0x000001B56D3DDEB8>\ndb = <fixture.db.DbFixture object at 0x000001B56D3C6470>\njson_contacts = None;firstname Rl;lastnamel98x  trB;address BQdlJ;home_phoneyfP;mobile_phone;work_phone GXz;phone2G;emailuo d2q0vq;email2wny  tH;email3uytJT0I\ncheck_ui = False\n\n    def test_add_new(app, db, json_contacts, check_ui):\n         contact = json_contacts\n         old_contacts = db.get_contact_list()\n         app.contacts.create_contact(contact)\n         new_contacts = db.get_contact_list()\n         old_contacts.append(contact)\n>        assert sorted(old_contacts, key=AddNew.id_or_max) == sorted(new_contacts, key=AddNew.id_or_max)\nE        assert [1;firstname1...one;None, ...] == [1;firstname1...one;None, ...]\nE          At index 12 diff: None;firstname Rl;lastnamel98x  trB;address BQdlJ;home_phoneyfP;mobile_phone;work_phone GXz;phone2G;emailuo d2q0vq;email2wny  tH;email3uytJT0I != 16;firstname Rl;lastnamel98x trB;None;None;None;None;None;None;None;None\nE          Use -v to get the full diff\n\ntest\\test_add_new.py:15: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "db",
+    "time" : {
+      "start" : 1597736332063,
+      "stop" : 1597736332071,
+      "duration" : 8
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1597736382933,
+      "stop" : 1597736383081,
+      "duration" : 148
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "check_ui",
+    "time" : {
+      "start" : 1597736383081,
+      "stop" : 1597736383081,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "stop",
+    "time" : {
+      "start" : 1597736332063,
+      "stop" : 1597736332063,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "afterStages" : [ {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1597736398378,
+      "stop" : 1597736398379,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "stop::fin",
+    "time" : {
+      "start" : 1597736397477,
+      "stop" : 1597736398377,
+      "duration" : 900
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_add_new"
+  }, {
+    "name" : "host",
+    "value" : "BLA00109"
+  }, {
+    "name" : "thread",
+    "value" : "12088-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_add_new"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "json_contacts",
+    "value" : "None;firstname Rl;lastnamel98x  trB;address BQdlJ;home_phoneyfP;mobile_phone;work_phone GXz;phone2G;emailuo d2q0vq;email2wny  tH;email3uytJT0I"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "415927fda0438a9d.json",
+  "parameterValues" : [ "None;firstname Rl;lastnamel98x  trB;address BQdlJ;home_phoneyfP;mobile_phone;work_phone GXz;phone2G;emailuo d2q0vq;email2wny  tH;email3uytJT0I" ]
+}
