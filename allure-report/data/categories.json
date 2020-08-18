@@ -4,23 +4,78 @@
   "children" : [ {
     "name" : "Product defects",
     "children" : [ {
-      "name" : "AssertionError: assert [1:Second Gro...er|| ]2y, ...] == [1:Second Gro...er|| ]2y, ...]\n  Left contains one more item: None:name|\\;headerL;footerxp\n  Use -v to get the full diff",
+      "name" : "AssertionError: assert [1:Second Gro...\"y2t>:2p, ...] == [1:Second Gro...\"y2t>:2p, ...]\n  Left contains one more item: None:name|\\;headerL;footerxp\n  Use -v to get the full diff",
       "children" : [ {
         "name" : "test_add_group[None:name|\\;headerL;footerxp]",
-        "uid" : "37b4e3009472aff3",
-        "parentUid" : "35b780c9f274d3bf1f4af5212fa4daad",
+        "uid" : "c243f3594ecf42c3",
+        "parentUid" : "6cd4d9fcedcfd96c5ffee708a45d7e88",
         "status" : "failed",
         "time" : {
-          "start" : 1597394715546,
-          "stop" : 1597394716685,
-          "duration" : 1139
+          "start" : 1597736356667,
+          "stop" : 1597736357730,
+          "duration" : 1063
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ "None:name|\\;headerL;footerxp" ]
       } ],
-      "uid" : "35b780c9f274d3bf1f4af5212fa4daad"
+      "uid" : "6cd4d9fcedcfd96c5ffee708a45d7e88"
+    }, {
+      "name" : "AssertionError: assert [1;firstname1...one;None, ...] == [1;firstname1...one;None, ...]\n  At index 11 diff: None;firstnamedlnlz;lastnameA  552;address;home_phoneEkbBsgLHP;mobile_phone2T;work_phonehx;phone2 gH8RJ;email;email2Oh8RY;email33w != 15;firstnamedlnlz;lastnameA 552;None;None;None;None;None;None;None;None\n  Use -v to get the full diff",
+      "children" : [ {
+        "name" : "test_add_new[None;firstnamedlnlz;lastnameA  552;address;home_phoneEkbBsgLHP;mobile_phone2T;work_phonehx;phone2 gH8RJ;email;email2Oh8RY;email33w]",
+        "uid" : "7b035665514d1e07",
+        "parentUid" : "52422c4feb185261a73649f25f41228b",
+        "status" : "failed",
+        "time" : {
+          "start" : 1597736378425,
+          "stop" : 1597736382919,
+          "duration" : 4494
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "None;firstnamedlnlz;lastnameA  552;address;home_phoneEkbBsgLHP;mobile_phone2T;work_phonehx;phone2 gH8RJ;email;email2Oh8RY;email33w" ]
+      } ],
+      "uid" : "52422c4feb185261a73649f25f41228b"
+    }, {
+      "name" : "AssertionError: assert [1;firstname1...one;None, ...] == [1;firstname1...one;None, ...]\n  At index 12 diff: None;firstname Rl;lastnamel98x  trB;address BQdlJ;home_phoneyfP;mobile_phone;work_phone GXz;phone2G;emailuo d2q0vq;email2wny  tH;email3uytJT0I != 16;firstname Rl;lastnamel98x trB;None;None;None;None;None;None;None;None\n  Use -v to get the full diff",
+      "children" : [ {
+        "name" : "test_add_new[None;firstname Rl;lastnamel98x  trB;address BQdlJ;home_phoneyfP;mobile_phone;work_phone GXz;phone2G;emailuo d2q0vq;email2wny  tH;email3uytJT0I]",
+        "uid" : "415927fda0438a9d",
+        "parentUid" : "8cc62c31b0b6b186aa1a48c574eb5832",
+        "status" : "failed",
+        "time" : {
+          "start" : 1597736383082,
+          "stop" : 1597736387591,
+          "duration" : 4509
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "None;firstname Rl;lastnamel98x  trB;address BQdlJ;home_phoneyfP;mobile_phone;work_phone GXz;phone2G;emailuo d2q0vq;email2wny  tH;email3uytJT0I" ]
+      } ],
+      "uid" : "8cc62c31b0b6b186aa1a48c574eb5832"
     } ],
     "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  }, {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "AttributeError: 'NoneType' object has no attribute 'group'",
+      "children" : [ {
+        "name" : "test_phones_on_contact_view_page",
+        "uid" : "8e55d2e03d93431d",
+        "parentUid" : "4275126efd978a824e4c8f2963e9923f",
+        "status" : "broken",
+        "time" : {
+          "start" : 1597736397036,
+          "stop" : 1597736397460,
+          "duration" : 424
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "4275126efd978a824e4c8f2963e9923f"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
   } ]
 }
