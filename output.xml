@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 2.9 (Python 3.7.1 on win32)" generated="20200818 22:54:44.989">
+<suite id="s1" name="Group Scenarios" source="C:\Users\User\PycharmProjects\python_training\rf\group_scenarios.robot">
+<test id="s1-t1" name="Add new group">
+<kw name="Init Fixtures" library="rf.AddressBook" type="setup">
+<status status="PASS" starttime="20200818 22:54:45.333" endtime="20200818 22:54:57.817"></status>
+</kw>
+<kw name="Get Group List" library="rf.AddressBook">
+<assign>
+<var>${old_list}</var>
+</assign>
+<msg timestamp="20200818 22:54:57.821" level="INFO">${old_list} = [1:Second Group;Groups Header;Groups Footer, 85:;;, 119:Second Group;Groups Header;Groups Footer, 138:named;S";headerd  XD*;footer|| ]2y, 139:name7@]QE;header;footer,~BgF"y2t&gt;:2p, 140:namek;header!1Y9...</msg>
+<status status="PASS" starttime="20200818 22:54:57.818" endtime="20200818 22:54:57.821"></status>
+</kw>
+<kw name="New Group" library="rf.AddressBook">
+<arguments>
+<arg>name1</arg>
+<arg>header1</arg>
+<arg>footer1</arg>
+</arguments>
+<assign>
+<var>${group}</var>
+</assign>
+<msg timestamp="20200818 22:54:57.822" level="INFO">${group} = None:name1;header1;footer1</msg>
+<status status="PASS" starttime="20200818 22:54:57.821" endtime="20200818 22:54:57.822"></status>
+</kw>
+<kw name="Create Group" library="rf.AddressBook">
+<arguments>
+<arg>${group}</arg>
+</arguments>
+<status status="PASS" starttime="20200818 22:54:57.822" endtime="20200818 22:54:59.005"></status>
+</kw>
+<kw name="Get Group List" library="rf.AddressBook">
+<assign>
+<var>${new_list}</var>
+</assign>
+<msg timestamp="20200818 22:54:59.008" level="INFO">${new_list} = [1:Second Group;Groups Header;Groups Footer, 85:;;, 119:Second Group;Groups Header;Groups Footer, 138:named;S";headerd  XD*;footer|| ]2y, 139:name7@]QE;header;footer,~BgF"y2t&gt;:2p, 140:namek;header!1Y9...</msg>
+<status status="PASS" starttime="20200818 22:54:59.006" endtime="20200818 22:54:59.008"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${group}</arg>
+</arguments>
+<status status="PASS" starttime="20200818 22:54:59.008" endtime="20200818 22:54:59.009"></status>
+</kw>
+<kw name="Group Lists Should Be Equal" library="rf.AddressBook">
+<arguments>
+<arg>${new_list}</arg>
+<arg>${old_list}</arg>
+</arguments>
+<status status="PASS" starttime="20200818 22:54:59.010" endtime="20200818 22:54:59.011"></status>
+</kw>
+<kw name="Destroy Fixtures" library="rf.AddressBook" type="teardown">
+<status status="PASS" starttime="20200818 22:54:59.016" endtime="20200818 22:54:59.582"></status>
+</kw>
+<status status="PASS" starttime="20200818 22:54:45.332" endtime="20200818 22:54:59.583" critical="yes"></status>
+</test>
+<test id="s1-t2" name="Delete group">
+<kw name="Init Fixtures" library="rf.AddressBook" type="setup">
+<status status="PASS" starttime="20200818 22:54:59.584" endtime="20200818 22:55:11.390"></status>
+</kw>
+<kw name="Get Group List" library="rf.AddressBook">
+<assign>
+<var>${old_list}</var>
+</assign>
+<msg timestamp="20200818 22:55:11.392" level="INFO">${old_list} = [1:Second Group;Groups Header;Groups Footer, 85:;;, 119:Second Group;Groups Header;Groups Footer, 138:named;S";headerd  XD*;footer|| ]2y, 139:name7@]QE;header;footer,~BgF"y2t&gt;:2p, 140:namek;header!1Y9...</msg>
+<status status="PASS" starttime="20200818 22:55:11.391" endtime="20200818 22:55:11.393"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${old_list}</arg>
+</arguments>
+<assign>
+<var>${len}</var>
+</assign>
+<msg timestamp="20200818 22:55:11.394" level="INFO">Length is 13</msg>
+<msg timestamp="20200818 22:55:11.394" level="INFO">${len} = 13</msg>
+<status status="PASS" starttime="20200818 22:55:11.394" endtime="20200818 22:55:11.394"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randrange(${len})</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${index}</var>
+</assign>
+<msg timestamp="20200818 22:55:11.404" level="INFO">${index} = 4</msg>
+<status status="PASS" starttime="20200818 22:55:11.395" endtime="20200818 22:55:11.404"></status>
+</kw>
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${group}</var>
+</assign>
+<msg timestamp="20200818 22:55:11.406" level="INFO">${group} = 139:name7@]QE;header;footer,~BgF"y2t&gt;:2p</msg>
+<status status="PASS" starttime="20200818 22:55:11.405" endtime="20200818 22:55:11.406"></status>
+</kw>
+<kw name="Delete Group" library="rf.AddressBook">
+<arguments>
+<arg>${group}</arg>
+</arguments>
+<status status="PASS" starttime="20200818 22:55:11.406" endtime="20200818 22:55:11.975"></status>
+</kw>
+<kw name="Get Group List" library="rf.AddressBook">
+<assign>
+<var>${new_list}</var>
+</assign>
+<msg timestamp="20200818 22:55:11.979" level="INFO">${new_list} = [1:Second Group;Groups Header;Groups Footer, 85:;;, 119:Second Group;Groups Header;Groups Footer, 138:named;S";headerd  XD*;footer|| ]2y, 140:namek;header!1Y9!*Xn(;footerypt;=/e&amp; kD, 141:Second Group;...</msg>
+<status status="PASS" starttime="20200818 22:55:11.977" endtime="20200818 22:55:11.979"></status>
+</kw>
+<kw name="Remove Values From List" library="Collections">
+<doc>Removes all occurrences of given ``values`` from ``list``.</doc>
+<arguments>
+<arg>${old_list}</arg>
+<arg>${group}</arg>
+</arguments>
+<status status="PASS" starttime="20200818 22:55:11.982" endtime="20200818 22:55:11.983"></status>
+</kw>
+<kw name="Group Lists Should Be Equal" library="rf.AddressBook">
+<arguments>
+<arg>${new_list}</arg>
+<arg>${old_list}</arg>
+</arguments>
+<status status="PASS" starttime="20200818 22:55:11.983" endtime="20200818 22:55:11.984"></status>
+</kw>
+<kw name="Destroy Fixtures" library="rf.AddressBook" type="teardown">
+<status status="PASS" starttime="20200818 22:55:11.985" endtime="20200818 22:55:12.557"></status>
+</kw>
+<status status="PASS" starttime="20200818 22:54:59.583" endtime="20200818 22:55:12.557" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20200818 22:54:44.990" endtime="20200818 22:55:12.559"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" id="s1" name="Group Scenarios">Group Scenarios</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
